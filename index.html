@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ultimate School Countdown PRO</title>
+    
+    <!-- PWA Manifest & Meta -->
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="manifest" href='data:application/manifest+json,{"name": "Ultimate School Countdown PRO", "short_name": "SchoolCountdown", "start_url": ".", "display": "standalone", "background_color": "#0b0f19", "theme_color": "#0b0f19", "icons": [{"src": "https://img.icons8.com/fluency/96/school.png", "sizes": "96x96", "type": "image/png"}]}'>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
@@ -486,7 +491,12 @@
                         Nejbližší prázdniny
                     </span>
                     
-                    <div style="display: flex; gap: 8px; align-items: center;">
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <!-- Tlačítko pro instalaci aplikace na plochu -->
+                        <button id="install-btn" class="action-btn" style="display: none;" onclick="installPWA()">
+                            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            Instalovat
+                        </button>
                         <button id="mode-toggle-btn" class="action-btn" onclick="toggleCountdownMode()">
                             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                             <span id="mode-btn-text">Celkem do konce</span>
@@ -579,6 +589,27 @@
     </div>
 
     <script>
+        // PWA Installation handler
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installBtn = document.getElementById('install-btn');
+            if (installBtn) installBtn.style.display = 'flex';
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        document.getElementById('install-btn').style.display = 'none';
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
         const schoolEvents = [
             { 
                 name: "Podzimní prázdniny", 
