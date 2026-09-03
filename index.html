@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ultimate School Countdown PRO</title>
-    
-    <!-- PWA Manifest & Meta -->
-    <meta name="theme-color" content="#0b0f19">
-    <link rel="manifest" href='data:application/manifest+json,{"name": "Ultimate School Countdown PRO", "short_name": "SchoolCountdown", "start_url": ".", "display": "standalone", "background_color": "#0b0f19", "theme_color": "#0b0f19", "icons": [{"src": "https://img.icons8.com/fluency/96/school.png", "sizes": "96x96", "type": "image/png"}]}'>
-
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22%23ec4899%22 d=%22M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z%22/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
@@ -62,14 +59,20 @@
 
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(236, 72, 153, 0.3);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-radius: 24px;
             padding: 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(236, 72, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(236, 72, 153, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(236, 72, 153, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
         @media (min-width: 768px) {
@@ -118,13 +121,14 @@
         }
 
         .live-clock-badge {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 6px 12px;
             border-radius: 30px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.1);
         }
 
         .action-btn {
@@ -142,13 +146,14 @@
             align-items: center;
             gap: 6px;
             transition: all 0.2s ease;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
         }
 
         .action-btn:hover {
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(139, 92, 246, 0.3));
             border-color: rgba(56, 189, 248, 0.7);
             transform: translateY(-1px);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
 
         .action-btn svg {
@@ -194,14 +199,14 @@
         }
 
         .time-box {
-            background: rgba(11, 15, 25, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 16px;
             padding: 16px 8px;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(139, 92, 246, 0.1);
         }
 
         @media (min-width: 768px) {
@@ -212,9 +217,9 @@
         }
 
         .time-box:hover {
-            border-color: rgba(236, 72, 153, 0.4);
+            border-color: rgba(236, 72, 153, 0.6);
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(236, 72, 153, 0.15);
+            box-shadow: 0 15px 30px rgba(236, 72, 153, 0.2), 0 0 25px rgba(236, 72, 153, 0.25);
         }
 
         .time-box span {
@@ -256,15 +261,18 @@
         }
 
         .metric-card {
-            background: rgba(11, 15, 25, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid rgba(6, 182, 212, 0.25);
             border-radius: 14px;
             padding: 12px 14px;
-            transition: background 0.2s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.08);
         }
 
         .metric-card:hover {
-            background: rgba(11, 15, 25, 0.7);
+            background: rgba(11, 15, 25, 0.8);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 0 18px rgba(6, 182, 212, 0.2);
         }
 
         .metric-card .label {
@@ -284,10 +292,17 @@
         }
 
         .progress-section {
-            background: rgba(11, 15, 25, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 16px;
             padding: 16px;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .progress-section:hover {
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
         }
 
         @media (min-width: 768px) {
@@ -322,7 +337,7 @@
             width: 0%;
             border-radius: 12px;
             transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
         }
 
         .sidebar-section {
@@ -378,8 +393,8 @@
         }
 
         .holiday-row {
-            background: rgba(11, 15, 25, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             border-radius: 14px;
             padding: 12px 14px;
             display: flex;
@@ -387,17 +402,24 @@
             align-items: center;
             gap: 8px;
             transition: all 0.2s ease;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.05);
+        }
+
+        .holiday-row:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
         }
 
         .holiday-row.passed {
             opacity: 0.35;
             filter: grayscale(0.7);
+            box-shadow: none;
         }
 
         .holiday-row.active {
             border-color: rgba(16, 185, 129, 0.5);
             background: rgba(16, 185, 129, 0.1);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
         }
 
         .holiday-content {
@@ -460,8 +482,8 @@
         }
 
         .footer-banner {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
-            border: 1px solid rgba(236, 72, 153, 0.25);
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(236, 72, 153, 0.35);
             border-radius: 14px;
             padding: 14px 16px;
             display: flex;
@@ -469,6 +491,13 @@
             gap: 12px;
             font-size: 0.8rem;
             color: #f472b6;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.12);
+            transition: all 0.2s ease;
+        }
+
+        .footer-banner:hover {
+            border-color: rgba(236, 72, 153, 0.6);
+            box-shadow: 0 0 22px rgba(236, 72, 153, 0.22);
         }
 
         .footer-banner svg {
@@ -476,6 +505,12 @@
             width: 20px;
             height: 20px;
             fill: #ec4899;
+        }
+
+        .glowing-name {
+            color: #f472b6;
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.8), 0 0 20px rgba(236, 72, 153, 0.5);
+            font-weight: 700;
         }
     </style>
 </head>
@@ -491,12 +526,7 @@
                         Nejbližší prázdniny
                     </span>
                     
-                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                        <!-- Tlačítko pro instalaci aplikace na plochu -->
-                        <button id="install-btn" class="action-btn" style="display: none;" onclick="installPWA()">
-                            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                            Instalovat
-                        </button>
+                    <div style="display: flex; gap: 8px; align-items: center;">
                         <button id="mode-toggle-btn" class="action-btn" onclick="toggleCountdownMode()">
                             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                             <span id="mode-btn-text">Celkem do konce</span>
@@ -511,7 +541,7 @@
                 
                 <div class="event-heading-area">
                     <h1 id="event-title">Načítání dat...</h1>
-                    <p id="event-subtitle">Synchronizace s kalendářem MŠMT...</p>
+                    <p id="event-subtitle">Synchronizace s kalendářem...</p>
                 </div>
             </div>
 
@@ -574,7 +604,7 @@
                     <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
                     Harmonogram volna
                 </h2>
-                <span style="font-size: 0.7rem; color: var(--text-muted);">MŠMT ČR</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">By: <span class="glowing-name">Martin</span></span>
             </div>
 
             <div id="holidays-container" class="holidays-scroll-container">
@@ -589,27 +619,6 @@
     </div>
 
     <script>
-        // PWA Installation handler
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const installBtn = document.getElementById('install-btn');
-            if (installBtn) installBtn.style.display = 'flex';
-        });
-
-        function installPWA() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        document.getElementById('install-btn').style.display = 'none';
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        }
-
         const schoolEvents = [
             { 
                 name: "Podzimní prázdniny", 
